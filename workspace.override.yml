@@ -4,10 +4,11 @@ attributes.default:
     service:
       proxy:
         https:
-          crt: file:///tmp/_.my127.site/cert.pem
-          key: file:///tmp/_.my127.site/key.pem
+          crt: file:///$HOME/_.my127.site/cert.pem
+          key: file:///$HOME/_.my127.site/key.pem
 
 command('generate certificate'): |
   #!bash
-  rm -rf /tmp/_.my127.site
-  docker run --rm -v /tmp:/app hardikteufel/minica:main --domains '*.my127.site'
+  rm -rf $HOME/_.my127.site
+  docker run --rm -v $HOME:/app hardikteufel/minica:main --domains '*.my127.site'
+  ws global service proxy restart
