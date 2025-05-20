@@ -1,0 +1,12 @@
+---
+attributes.default:
+  global:
+    service:
+      proxy:
+        https:
+          crt: file:///tmp/_.my127.site/cert.pem
+          key: file:///tmp/_.my127.site/key.pem
+
+command('generate certificate'): |
+  #!bash
+  docker run --rm -v /tmp:/app minica --domains '*.my127.site'
