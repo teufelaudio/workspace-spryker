@@ -9,4 +9,5 @@ attributes.default:
 
 command('generate certificate'): |
   #!bash
-  docker run --rm -v /tmp:/app minica --domains '*.my127.site'
+  rm -rf /tmp/_.my127.site
+  docker run --rm -v /tmp:/app hardikteufel/minica:main --domains '*.my127.site'
